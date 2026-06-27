@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yashraj Sharma — About</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RESET & ROOT
+   ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --green:       #2D6A4F;
+  --green-lt:    #52B788;
+  --green-dark:  #0A2518;
+  --green-dark2: #071910;
+  --green-nav:   #1B4332;
+  --sidebar-w:   172px;
+  --font:        'Poppins', sans-serif;
+  --sig:         'Dancing Script', cursive;
+  
+  /* Modern Dynamic Variables */
+  --bg:          #fff;
+  --text:        #111;
+  --muted:       #777;
+  --border:      #f0f0f0;
+  --card-bg:     #fff;
+  --card-border: #f5f5f5;
+  --pi-row-border: #f8f8f8;
+  --quote-box-bg: #fff;
+  --quote-box-border: #f2f2f2;
+  --hero-grad-1: #132e22;
+  --hero-grad-2: #0A2518;
+  --hero-grad-3: #071910;
+  
+  --tr:          all .25s ease;
+  --card-sh:     0 8px 56px rgba(0,0,0,.12);
+}
+
+/* ============================================================
+   DARK MODE OVERRIDES
+   ============================================================ */
+body.dark {
+  --bg:          #0B0A1A;
+  --text:        #F8F8FC;
+  --muted:       #A5A5C5;
+  --border:      #232145;
+  --card-bg:     #131224;
+  --card-border: #232145;
+  --pi-row-border: #1D1B3A;
+  --quote-box-bg: #131224;
+  --quote-box-border: #232145;
+  --hero-grad-1: #091711;
+  --hero-grad-2: #040f0a;
+  --hero-grad-3: #020705;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background var(--tr), color var(--tr);
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.sidebar {
+  width: var(--sidebar-w);
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  background: var(--card-bg);
+  border-right: 1.5px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 28px 14px 24px;
+  z-index: 1000;
+  transition: background var(--tr), border-color var(--tr);
+}
+
+.logo {
+  font-size: 42px;
+  font-weight: 800;
+  font-family: Georgia, serif;
+  color: var(--text);
+  letter-spacing: -2px;
+  padding-left: 6px;
+  margin-bottom: 32px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: var(--tr);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.nav a svg { width: 17px; height: 17px; flex-shrink: 0; stroke-width: 1.75; }
+
+.nav a:hover:not(.active) { background: rgba(82, 183, 136, 0.1); color: var(--green-lt); }
+.nav a.active { background: var(--green-nav); color: #fff; }
+
+/* Sidebar bottom */
+.sb-btm { display: flex; flex-direction: column; gap: 16px; }
+
+.dm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--text);
+  color: var(--bg);
+  border: none;
+  border-radius: 50px;
+  padding: 9px 14px;
+  font-family: var(--font);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  transition: all .2s;
+}
+.dm:hover { opacity: 0.9; }
+.dm svg { width: 14px; height: 14px; flex-shrink: 0; }
+.dm .arr { margin-left: auto; }
+
+.socials { display: flex; gap: 18px; padding: 0 6px; align-items: center; }
+.socials a { color: var(--muted); display: flex; align-items: center; text-decoration: none; transition: color .2s; }
+.socials a:hover { color: var(--green-lt); }
+.socials svg { width: 20px; height: 20px; }
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.main { margin-left: var(--sidebar-w); flex: 1; min-width: 0; }
+
+/* ============================================================
+   DARK GREEN HERO SECTION
+   ============================================================ */
+.dark-sec {
+  position: relative;
+  min-height: 300px;
+  background: radial-gradient(ellipse at 20% 40%, var(--hero-grad-1) 0%, var(--hero-grad-2) 55%, var(--hero-grad-3) 100%);
+  padding: 60px 64px 110px;
+  overflow: visible;
+  transition: background var(--tr);
+}
+
+/* Topographic pattern overlay */
+.topo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Dark content */
+.dark-content {
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--green-lt);
+  margin-bottom: 18px;
+}
+
+.dark-h {
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 24px;
+}
+.dark-h .hi { color: var(--green-lt); }
+
+.dark-p {
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: rgba(255,255,255,.75);
+  max-width: 540px;
+}
+
+/* Plant illustration */
+.plant-wrap {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 280px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.plant-wrap svg { width: 100%; height: auto; display: block; }
+
+/* ============================================================
+   WHITE INFO CARD
+   ============================================================ */
+.info-wrap {
+  position: relative;
+  z-index: 20;
+  padding: 0 48px 0;
+  margin-top: -80px;
+}
+
+.info-card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: 22px;
+  box-shadow: var(--card-sh);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  transition: background var(--tr), border-color var(--tr);
+}
+
+/* Personal Info */
+.pi {
+  padding: 48px 48px 52px;
+  border-right: 1.5px solid var(--card-border);
+}
+
+.pi-h {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 28px;
+}
+
+.pi-rows { display: flex; flex-direction: column; gap: 0; }
+
+.pi-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  align-items: baseline;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--pi-row-border);
+}
+
+.pi-row:last-child { border-bottom: none; }
+
+.pi-lbl {
+  font-size: 13.5px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.pi-val {
+  font-size: 13.5px;
+  color: var(--text);
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.pi-val.open {
+  color: var(--green-lt);
+  font-weight: 600;
+}
+
+/* Download CV button */
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px;
+  padding: 14px 28px;
+  background: var(--green-nav);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--tr);
+}
+.cv-btn:hover { background: var(--green); transform: translateY(-2px); }
+.cv-btn svg { width: 16px; height: 16px; }
+
+/* What I Do */
+.wid {
+  padding: 48px 48px 52px;
+}
+
+.wid-h {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--green-lt);
+  margin-bottom: 28px;
+}
+
+.wid-items { display: flex; flex-direction: column; gap: 24px; }
+
+.wid-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.wid-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.wid-icon svg { width: 20px; height: 20px; }
+
+.wid-t { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.wid-d { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+
+/* ============================================================
+   QUOTE SECTION
+   ============================================================ */
+.quote-sec {
+  padding: 56px 48px 60px;
+  background: var(--bg);
+  transition: background var(--tr);
+}
+
+.quote-box {
+  background: var(--quote-box-bg);
+  border-radius: 18px;
+  border: 1.5px solid var(--quote-box-border);
+  padding: 44px 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  transition: background var(--tr), border-color var(--tr);
+}
+
+.q-marks {
+  font-size: 72px;
+  font-weight: 900;
+  color: var(--green-lt);
+  line-height: 0.7;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 8px;
+  font-family: Georgia, serif;
+}
+
+.q-text {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.q-sig {
+  font-family: var(--sig);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--muted);
+  flex-shrink: 0;
+  transform: rotate(-5deg);
+  display: inline-block;
+  margin-left: 16px;
+}
+
+/* ============================================================
+   FADE ANIMATIONS
+   ============================================================ */
+.fade { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+.fade.vis { opacity: 1; transform: none; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1080px) {
+  .dark-sec { padding: 50px 44px 100px; }
+  .dark-h { font-size: 42px; }
+  .info-wrap { padding: 0 32px 0; }
+  .plant-wrap { width: 220px; }
+  .quote-sec { padding: 40px 32px 48px; }
+}
+
+@media (max-width: 860px) {
+  :root { --sidebar-w: 70px; }
+  .logo { font-size: 26px; padding-left: 0; text-align: center; }
+  .nav a span { display: none; }
+  .nav a { padding: 12px; justify-content: center; gap: 0; }
+  .dm span, .dm .arr { display: none; }
+  .dm { padding: 10px; justify-content: center; }
+  .socials { flex-direction: column; gap: 14px; align-items: center; }
+}
+
+@media (max-width: 720px) {
+  .dark-sec { padding: 40px 24px 90px; }
+  .dark-h { font-size: 32px; }
+  .plant-wrap { width: 170px; }
+  .info-wrap { padding: 0 16px 0; margin-top: -56px; }
+  .info-card { grid-template-columns: 1fr; }
+  .pi { border-right: none; border-bottom: 1.5px solid var(--card-border); padding: 36px 28px; }
+  .wid { padding: 36px 28px; }
+  .quote-sec { padding: 32px 16px 40px; }
+  .quote-box { flex-direction: column; gap: 20px; padding: 32px 28px; }
+  .q-sig { align-self: flex-end; }
+}
+
+@media (max-width: 480px) {
+  .dark-h { font-size: 28px; }
+  .q-text { font-size: 14.5px; }
+  .pi-row { grid-template-columns: 90px 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ======================== SIDEBAR ======================== -->
+<aside class="sidebar">
+  <div class="logo">YS</div>
+
+  <nav class="nav">
+    <a href="index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="about.html" class="active">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>About</span>
+    </a>
+    <a href="skills.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <span>Skills</span>
+    </a>
+    <a href="projects.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>Projects</span>
+    </a>
+    <a href="education.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <span>Education</span>
+    </a>
+    <a href="certificates.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+      <span>Certificates</span>
+    </a>
+    <a href="contact.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span>Contact</span>
+    </a>
+  </nav>
+
+  <div class="sb-btm">
+    <!-- FIXED: Added active click listener to link with JS toggle -->
+    <button class="dm" onclick="toggleDark()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span>Dark Mode</span>
+      <svg class="arr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><line x1="12" y1="3" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21"/><line x1="3" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21" y2="12"/></svg>
+    </button>
+    <div class="socials">
+      <a href="https://linkedin.com/in/yashraj-sharma-4a87ab348" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://github.com/yashraj-DS" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      </a>
+      <a href="mailto:yashrajsh1234@gmail.com" aria-label="Email">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+    </div>
+  </div>
+</aside>
+
+<!-- ======================== MAIN ======================== -->
+<main class="main">
+
+  <!-- ——— DARK GREEN SECTION ——— -->
+  <section class="dark-sec">
+    <div class="topo" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 1200 320">
+        <path d="M-100,80 C150,40 350,110 600,80 S900,30 1300,80" fill="none" stroke="rgba(255,255,255,0.055)" stroke-width="1.5"/>
+        <path d="M-100,110 C150,70 350,140 600,110 S900,60 1300,110" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.5"/>
+        <path d="M-100,140 C150,100 350,170 600,140 S900,90 1300,140" fill="none" stroke="rgba(255,255,255,0.045)" stroke-width="1.5"/>
+        <path d="M-100,170 C150,130 350,200 600,170 S900,120 1300,170" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1.5"/>
+        <path d="M-100,200 C150,160 350,230 600,200 S900,150 1300,200" fill="none" stroke="rgba(255,255,255,0.055)" stroke-width="1.5"/>
+        <path d="M-100,230 C150,190 350,255 600,230 S900,180 1300,230" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1.5"/>
+        <path d="M-100,260 C150,220 350,285 600,260 S900,210 1300,260" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1.5"/>
+        <path d="M-100,290 C150,250 350,310 600,290 S900,240 1300,290" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1.5"/>
+        <path d="M-100,55 C120,20 320,80 580,55 S870,10 1300,55" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1.2"/>
+        <path d="M-100,320 C150,280 350,340 600,315 S900,270 1300,320" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.2"/>
+        <ellipse cx="900" cy="160" rx="200" ry="90" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1.2"/>
+        <ellipse cx="900" cy="160" rx="160" ry="70" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.2"/>
+        <ellipse cx="900" cy="160" rx="120" ry="50" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1.2"/>
+        <ellipse cx="200" cy="200" rx="150" ry="70" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="1.2"/>
+      </svg>
+    </div>
+
+    <div class="dark-content">
+      <p class="eyebrow">About Me</p>
+      <h2 class="dark-h">Get to know <span class="hi">me</span></h2>
+      <p class="dark-p">
+        I'm a Data Analyst passionate about transforming raw data into actionable insights.
+        I enjoy working with data, building visualizations, and solving problems that create real business value.
+      </p>
+    </div>
+
+    <div class="plant-wrap" aria-hidden="true">
+      <img src="https://lh3.googleusercontent.com/d/1w2T4N1FOsAAt5Eb9dKEwIX9tJwy7W1wq" alt="Areca palm in pot" width="280" style="display: block; max-width: 100%; height: auto;">
+    </div>
+  </section>
+
+  <!-- ——— WHITE INFO CARD ——— -->
+  <div class="info-wrap fade">
+    <div class="info-card">
+
+      <!-- Personal Info -->
+      <div class="pi">
+        <h3 class="pi-h">Personal Info</h3>
+        <div class="pi-rows">
+          <div class="pi-row">
+            <span class="pi-lbl">Name:</span>
+            <span class="pi-val">Yashraj Sharma</span>
+          </div>
+          <div class="pi-row">
+            <span class="pi-lbl">Role:</span>
+            <span class="pi-val">Data Analyst</span>
+          </div>
+          <div class="pi-row">
+            <span class="pi-lbl">Location:</span>
+            <span class="pi-val">India</span>
+          </div>
+          <div class="pi-row">
+            <span class="pi-lbl">Email:</span>
+            <span class="pi-val">yashrajsh1234@gmail.com</span>
+          </div>
+          <div class="pi-row">
+            <span class="pi-lbl">Availability:</span>
+            <span class="pi-val open">Open to Work</span>
+          </div>
+        </div>
+
+        <a href="#" class="cv-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </a>
+      </div>
+
+      <!-- What I Do -->
+      <div class="wid">
+        <h3 class="wid-h">What I Do</h3>
+        <div class="wid-items">
+
+          <div class="wid-item">
+            <div class="wid-icon" style="background:#EEE8FF">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#7C6FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><line x1="14" y1="17" x2="21" y2="17"/><line x1="17" y1="14" x2="17" y2="21"/></svg>
+            </div>
+            <div class="wid-txt">
+              <div class="wid-t">Data Analysis</div>
+              <div class="wid-d">Collect, clean and analyze data to discover insights.</div>
+            </div>
+          </div>
+
+          <div class="wid-item">
+            <div class="wid-icon" style="background:#EBE8FF">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#7C6FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="5" r="1.5"/><circle cx="12" cy="5" r="1.5"/><circle cx="19" cy="5" r="1.5"/><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/><circle cx="5" cy="19" r="1.5"/><circle cx="12" cy="19" r="1.5"/><circle cx="19" cy="19" r="1.5"/></svg>
+            </div>
+            <div class="wid-txt">
+              <div class="wid-t">Data Visualization</div>
+              <div class="wid-d">Build interactive dashboards and compelling visuals.</div>
+            </div>
+          </div>
+
+          <div class="wid-item">
+            <div class="wid-icon" style="background:#FFE8E8">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#E05252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18"/><path d="M9 21V9"/><line x1="13" y1="13" x2="17" y2="13"/><line x1="13" y1="17" x2="15" y2="17"/></svg>
+            </div>
+            <div class="wid-txt">
+              <div class="wid-t">Reporting</div>
+              <div class="wid-d">Build reports and dashboards to support data-driven decisions.</div>
+            </div>
+          </div>
+
+          <div class="wid-item">
+            <div class="wid-icon" style="background:#E6F7EE">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="wid-txt">
+              <div class="wid-t">Insight Generation</div>
+              <div class="wid-d">Find patterns and trends to solve real-world problems.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ——— QUOTE SECTION ——— -->
+  <section class="quote-sec">
+    <div class="quote-box fade">
+      <div class="q-marks">"</div>
+      <p class="q-text">The goal is not to be a data expert,<br>but to be data informed.</p>
+      <span class="q-sig">Yashraj</span>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // FIXED: Toggles dark mode structure across layout variables
+  function toggleDark() {
+    document.body.classList.toggle('dark');
+  }
+
+  // Fade-in on scroll
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+
+  // Dark section entrance
+  const darkContent = document.querySelector('.dark-content');
+  if (darkContent) {
+    [...darkContent.children].forEach((el, i) => {
+      el.style.cssText = `opacity:0;transform:translateY(16px);transition:opacity .6s ease ${i*.14}s,transform .6s ease ${i*.14}s`;
+    });
+    setTimeout(() => {
+      [...darkContent.children].forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    }, 80);
+  }
+
+  // Plant entrance
+  const plant = document.querySelector('.plant-wrap');
+  if (plant) {
+    plant.style.cssText = 'opacity:0;transform:translateY(20px);transition:opacity .9s ease .4s,transform .9s ease .4s';
+    setTimeout(() => { plant.style.opacity = '1'; plant.style.transform = 'none'; }, 80);
+  }
+</script>
+</body>
+</html>

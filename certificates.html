@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Yashraj Sharma — Certificates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<style>
+/* ═══ RESET ═══════════════════════════════════════════ */
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --p1:#5E5CFF; --p2:#7B4DFF; --p3:#9B6DFF;
+  --pgrad: linear-gradient(90deg,#5E5CFF 0%,#7B4DFF 100%);
+  --wh:#FFFFFF; --body:#B8BDD0;
+}
+
+html,body {
+  font-family:'Poppins',sans-serif;
+  min-height:100vh;
+  display:flex;
+  background:#08101F;
+  overflow-x: hidden; /* Fixes right-side column overflow */
+  width: 100%;
+}
+
+/* ═══ FADE ANIMATIONS ══════════════════════════════════ */
+@keyframes riseUp {
+  from { opacity:0; transform:translateY(16px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes floatCert {
+  0%,100% { transform:translateY(0px) rotate(-1deg); }
+  50%      { transform:translateY(-12px) rotate(1deg); }
+}
+.d0 { animation:riseUp .55s      ease-out both; }
+.d1 { animation:riseUp .55s .12s ease-out both; }
+.d2 { animation:riseUp .55s .24s ease-out both; }
+.d3 { animation:riseUp .55s .36s ease-out both; }
+
+/* ═══ SIDEBAR ══════════════════════════════════════════ */
+.sidebar {
+  width:168px; min-width:168px;
+  height:100vh; position:fixed;
+  top:0; left:0;
+  background:#FFFFFF;
+  border-right:1px solid #EAEAF0;
+  box-shadow:10px 0 30px rgba(0,0,0,.08), 2px 0 8px rgba(0,0,0,.04);
+  display:flex; flex-direction:column;
+  padding:28px 12px 24px;
+  z-index:500;
+}
+.logo {
+  font-size:25px; font-weight:800;
+  color:#0F0E1E; letter-spacing:-0.5px;
+  padding-left:10px; margin-bottom:34px;
+  font-family:'Georgia',serif;
+}
+nav { flex:1; }
+nav ul { list-style:none; display:flex; flex-direction:column; gap:2px; }
+nav a {
+  display:flex; align-items:center; gap:10px;
+  padding:10px 12px; border-radius:10px;
+  text-decoration:none; font-size:13px; font-weight:500;
+  color:#757592;
+  transition:background .18s, color .18s;
+}
+nav a:hover { background:#F0EDFF; color:var(--p2); }
+nav a.active {
+  background:var(--pgrad);
+  color:#FFF;
+  border-radius:12px;
+  box-shadow:0 4px 18px rgba(100,60,255,.45), inset 0 1px 0 rgba(255,255,255,.12);
+}
+nav a.active svg { stroke:#FFF !important; }
+
+.dbtn {
+  display:flex; align-items:center; gap:8px;
+  background:#11112A; color:#FFF;
+  border:none; border-radius:12px;
+  padding:12px 14px;
+  font-family:'Poppins',sans-serif;
+  font-size:12px; font-weight:500;
+  cursor:pointer; width:100%; margin-bottom:20px;
+}
+.dbtn .lbl { flex:1; text-align:left; }
+
+.soc { display:flex; gap:22px; padding-left:10px; }
+.soc a { color:#9898B8; text-decoration:none; line-height:0; transition:color .18s; }
+.soc a:hover { color:var(--p2); }
+
+/* ═══ MAIN ════════════════════════════════════════════ */
+.main {
+  margin-left:168px;
+  flex:1;
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;   /* Clips the massive glowing blobs */
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse 900px 820px at 108%  -6%,
+      rgba(115,62,255,.55) 0%, rgba(90,45,220,.28) 42%, transparent 68%),
+    radial-gradient(ellipse 720px 680px at 102%  58%,
+      rgba(90,48,235,.35)  0%, rgba(70,35,200,.18) 48%, transparent 70%),
+    radial-gradient(ellipse 560px 480px at 96%  104%,
+      rgba(105,55,240,.28) 0%, transparent 58%),
+    radial-gradient(ellipse 600px 520px at -6%   98%,
+      rgba(82,40,210,.36)  0%, rgba(62,30,180,.16) 46%, transparent 68%),
+    radial-gradient(ellipse 900px 640px at 56%   52%,
+      rgba(62,32,175,.14)  0%, transparent 58%),
+    radial-gradient(ellipse 480px 460px at  4%   46%,
+      rgba(52,26,164,.18)  0%, transparent 58%),
+    linear-gradient(135deg, #08101F 0%, #0B1327 45%, #0D1733 100%);
+}
+
+/* Bloom blobs */
+.blob { position:absolute; border-radius:50%; pointer-events:none; z-index:0; }
+.blob-a {
+  width:820px; height:740px;
+  background:radial-gradient(circle,rgba(125,68,255,.48) 0%,rgba(95,48,225,.22) 50%,transparent 70%);
+  filter:blur(65px); top:-260px; right:-260px;
+}
+.blob-b {
+  width:580px; height:520px;
+  background:radial-gradient(circle,rgba(88,44,224,.38) 0%,rgba(66,32,194,.16) 50%,transparent 70%);
+  filter:blur(80px); bottom:-180px; left:-180px;
+}
+.blob-c {
+  width:620px; height:640px;
+  background:radial-gradient(circle,rgba(98,52,235,.32) 0%,rgba(74,38,205,.14) 50%,transparent 70%);
+  filter:blur(85px); top:25%; right:-180px;
+}
+.blob-d {
+  width:480px; height:460px;
+  background:radial-gradient(circle,rgba(100,52,230,.26) 0%,transparent 65%);
+  filter:blur(90px); bottom:-100px; right:-100px;
+}
+
+/* Subtle dot-field */
+.dot-field {
+  position:absolute; inset:0;
+  background-image:radial-gradient(circle,rgba(140,160,255,.22) 1.2px,transparent 1.2px);
+  background-size:34px 34px;
+  pointer-events:none; z-index:1; opacity:.55;
+}
+
+/* Geometric triangle decorations */
+.tri { position:absolute; pointer-events:none; z-index:2; }
+.tri-1 { width:150px; height:130px; top:32px; right:55px; }
+.tri-2 { width:90px;  height:78px;  top:195px; right:128px; }
+.tri-3 { width:72px;  height:62px;  bottom:55px; left:130px; }
+
+/* ═══ CONTENT ══════════════════════════════════════════ */
+.content {
+  position:relative; z-index:3;
+  padding:52px 56px 56px;
+  min-height:100vh;
+}
+
+/* ═══ HERO AREA ════════════════════════════════════════ */
+.hero-area {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:32px;
+  margin-bottom:52px;
+}
+.hero-left { flex:1; }
+
+.eyebrow {
+  font-size:11px; font-weight:700;
+  letter-spacing:3.6px; text-transform:uppercase;
+  color:#8F65FF; margin-bottom:12px;
+}
+.heading {
+  font-size:46px; font-weight:700;
+  color:var(--wh); line-height:1.1;
+  letter-spacing:-0.4px; margin-bottom:10px;
+}
+.heading .grad {
+  background:linear-gradient(90deg,#7B4DFF 0%,#B07AFF 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.heading-line {
+  width:44px; height:3.5px;
+  background:var(--pgrad);
+  border-radius:2px;
+  margin-bottom:18px;
+}
+.subtext {
+  font-size:15px; color:var(--body);
+  line-height:1.78; max-width:420px;
+}
+
+/* ═══ 3D CERT ILLUSTRATION ══════════════════════════════ */
+.cert-art-wrap {
+  width:400px; min-width:400px;
+  height:300px;
+  position:relative;
+  flex-shrink:0;
+}
+.cert-art-wrap svg {
+  width:100%; height:100%;
+  animation:floatCert 6s ease-in-out infinite;
+  transform-origin:center center;
+}
+
+/* ═══ CERTIFICATE CARDS ════════════════════════════════ */
+.cert-list {
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+
+/* Single card */
+.cert-card {
+  display:flex;
+  align-items:stretch;
+  background:rgba(10,14,40,.65);
+  backdrop-filter:blur(28px) saturate(1.4);
+  -webkit-backdrop-filter:blur(28px) saturate(1.4);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:20px;
+  overflow:hidden;
+  transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+.cert-card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 24px 60px rgba(0,0,0,.45), 0 0 36px rgba(100,60,255,.15);
+  border-color:rgba(124,77,255,.32);
+}
+
+/* Certificate thumbnail */
+.cert-thumb {
+  width:270px; min-width:270px;
+  background:#fff;
+  overflow:hidden;
+  display:flex;
+  align-items:stretch;
+  flex-shrink:0;
+}
+/* REPLACE THE SVG BELOW WITH:
+   <img src="your-certificate.png" alt="Certificate Name" style="width:100%;height:100%;object-fit:cover;display:block;">
+*/
+.cert-thumb svg {
+  width:100%; height:100%;
+  display:block;
+}
+
+/* Certificate info panel */
+.cert-info {
+  flex:1;
+  padding:36px 44px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:14px;
+}
+.cert-issuer {
+  font-size:18px; font-weight:700;
+  color:#8F65FF;
+  letter-spacing:0.2px;
+}
+.cert-name {
+  font-size:26px; font-weight:700;
+  color:#FFFFFF;
+  line-height:1.25;
+}
+.cert-date {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:14px;
+  color:rgba(184,189,208,.82);
+  font-weight:500;
+}
+.cert-date svg { flex-shrink:0; }
+
+/* View Certificate button */
+.view-cert-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:6px;
+  padding:13px 28px;
+  background:transparent;
+  border:1.5px solid rgba(124,77,255,.55);
+  border-radius:12px;
+  color:#9B75FF;
+  font-family:'Poppins',sans-serif;
+  font-size:14px; font-weight:600;
+  cursor:pointer;
+  letter-spacing:0.02em;
+  align-self:flex-start;
+  transition:all .25s ease;
+  text-decoration:none;
+}
+.view-cert-btn:hover {
+  background:rgba(124,77,255,.16);
+  border-color:rgba(124,77,255,.82);
+  color:#C4A0FF;
+  box-shadow:0 0 26px rgba(124,77,255,.22);
+  transform:translateX(4px);
+}
+.view-cert-btn svg { flex-shrink:0; }
+
+/* ═══ RESPONSIVE ═══════════════════════════════════════ */
+@media(max-width:1280px) {
+  .heading { font-size:38px; }
+  .cert-art-wrap { width:320px; min-width:320px; }
+  .cert-name { font-size:22px; }
+}
+@media(max-width:1080px) {
+  .hero-area { flex-direction:column; align-items:flex-start; gap:0; }
+  .cert-art-wrap { display:none; }
+  .cert-info { padding:28px 32px; }
+}
+@media(max-width:820px) {
+  .cert-card { flex-direction:column; }
+  .cert-thumb { width:100%; min-width:unset; height:210px; }
+  .content { padding:40px 28px 48px; }
+  .heading { font-size:32px; }
+}
+@media(max-width:640px) {
+  .sidebar { transform:translateX(-100%); }
+  .sidebar.open { transform:translateX(0); }
+  .main { margin-left:0; }
+  .ham { display:flex; }
+  .cert-info { padding:24px 20px; gap:12px; }
+  .cert-name { font-size:18px; }
+}
+.ham {
+  display:none; position:fixed;
+  top:14px; left:14px; z-index:600;
+  background:var(--p2); border:none;
+  border-radius:10px; padding:9px;
+  cursor:pointer; color:#fff;
+  align-items:center;
+}
+.overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,.4); z-index:400;
+}
+.overlay.open { display:block; }
+
+/* ═══ THEME TRANSITION & LIGHT THEME OVERRIDES ════════ */
+body {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.sidebar {
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* When body has .light-theme class, invert these variables and styles */
+body.light-theme {
+  background: #F4F6FA;
+}
+body.light-theme .main {
+  background: linear-gradient(135deg, #F4F6FA 0%, #EAEFF8 100%);
+}
+body.light-theme .sidebar {
+  background: #FFFFFF;
+  border-right: 1px solid #D9DEEB;
+}
+body.light-theme .heading {
+  color: #0F0E1E;
+}
+body.light-theme .subtext {
+  color: #55596D;
+}
+body.light-theme .cert-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+body.light-theme .cert-name {
+  color: #1A1930;
+}
+body.light-theme .cert-date {
+  color: #62667E;
+}
+body.light-theme .dot-field {
+  background-image: radial-gradient(circle, rgba(94, 92, 255, 0.15) 1.2px, transparent 1.2px);
+}
+</style>
+</head>
+<body>
+
+<div class="overlay" id="overlay" onclick="closeSB()"></div>
+<button class="ham" id="ham" onclick="toggleSB()">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+    <line x1="3" y1="6" x2="21" y2="6"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <line x1="3" y1="18" x2="21" y2="18"/>
+  </svg>
+</button>
+
+<!-- ══════════════════════════════════
+     SIDEBAR  (identical to all pages)
+══════════════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="logo">YS</div>
+
+  <nav>
+    <ul>
+      <li><a href="index.html"><i data-lucide="house"           width="16" height="16"></i> Home</a></li>
+      <li><a href="about.html"><i data-lucide="user"            width="16" height="16"></i> About</a></li>
+      <li><a href="skills.html"><i data-lucide="layout-grid"    width="16" height="16"></i> Skills</a></li>
+      <li><a href="projects.html"><i data-lucide="folder"       width="16" height="16"></i> Projects</a></li>
+      <li><a href="education.html"><i data-lucide="graduation-cap" width="16" height="16"></i> Education</a></li>
+      <li><a href="certificates.html" class="active"><i data-lucide="shield-check" width="16" height="16"></i> Certificates</a></li>
+      <li><a href="contact.html"><i data-lucide="send"          width="16" height="16"></i> Contact</a></li>
+    </ul>
+  </nav>
+
+  <button class="dbtn" id="theme-toggle">
+  <i data-lucide="sun" width="14" height="14"></i>
+  <span class="lbl" id="theme-text">Light Mode</span>
+</button>
+
+  <div class="soc">
+    <a href="https://linkedin.com/in/yashraj-sharma-4a87ab348" target="_blank" title="LinkedIn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+    </a>
+    <a href="https://github.com/yashraj-DS" target="_blank" title="GitHub">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+    </a>
+    <a href="mailto:yashrajsh1234@gmail.com" title="Email">
+      <i data-lucide="mail"     width="18" height="18"></i>
+    </a>
+  </div>
+</aside>
+
+<!-- ══════════════════════════════════
+     MAIN
+══════════════════════════════════ -->
+<main class="main">
+
+  <!-- Background layers -->
+  <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
+  <div class="blob blob-c"></div>
+  <div class="blob blob-d"></div>
+  <div class="dot-field"></div>
+
+  <!-- Geometric triangle outlines -->
+  <svg class="tri tri-1" viewBox="0 0 150 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="75,6 144,124 6,124" stroke="rgba(255,255,255,.18)" stroke-width="1.5" stroke-linejoin="round"/>
+  </svg>
+  <svg class="tri tri-2" viewBox="0 0 90 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="45,5 85,73 5,73" stroke="rgba(255,255,255,.13)" stroke-width="1.5" stroke-linejoin="round"/>
+  </svg>
+  <svg class="tri tri-3" viewBox="0 0 72 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="36,4 68,58 4,58" stroke="rgba(255,255,255,.12)" stroke-width="1.5" stroke-linejoin="round"/>
+  </svg>
+
+  <div class="content">
+
+    <!-- ════════════════════════════════
+         HERO AREA
+    ════════════════════════════════ -->
+    <div class="hero-area">
+
+      <!-- Left: text -->
+      <div class="hero-left d0">
+        <p class="eyebrow">MY CERTIFICATES</p>
+        <h1 class="heading">My <span class="grad">Certificate</span></h1>
+        <div class="heading-line"></div>
+        <p class="subtext">
+          A professional certification that represents my skills,<br>
+          knowledge and continuous learning journey.
+        </p>
+      </div>
+
+      <!-- Right: floating 3D illustration -->
+      <div class="cert-art-wrap d1" aria-hidden="true">
+        <svg viewBox="0 0 420 310" xmlns="http://www.w3.org/2000/svg" fill="none">
+
+          <!-- Outer glow rings -->
+          <circle cx="240" cy="148" r="148" fill="rgba(94,92,255,.05)" stroke="rgba(124,77,255,.10)" stroke-width="1"/>
+          <circle cx="240" cy="148" r="108" fill="rgba(94,92,255,.04)" stroke="rgba(124,77,255,.07)" stroke-width="1"/>
+
+          <!-- ── Main certificate document ── -->
+          <rect x="115" y="24" width="200" height="256" rx="14"
+                fill="rgba(12,18,56,.92)" stroke="rgba(124,77,255,.40)" stroke-width="1.5"/>
+          <!-- Inner dashed border -->
+          <rect x="124" y="33" width="182" height="238" rx="10"
+                fill="none" stroke="rgba(124,77,255,.20)" stroke-width="1" stroke-dasharray="5,4"/>
+          <!-- Header gradient bar -->
+          <defs>
+            <linearGradient id="hdrGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#5E5CFF" stop-opacity=".85"/>
+              <stop offset="100%" stop-color="#9B6DFF" stop-opacity=".85"/>
+            </linearGradient>
+          </defs>
+          <rect x="129" y="38" width="172" height="44" rx="8" fill="url(#hdrGrad)"/>
+          <!-- "YS" monogram in header -->
+          <text x="215" y="67" text-anchor="middle" font-family="Georgia,serif"
+                font-size="18" fill="rgba(255,255,255,.9)" font-weight="700">YS</text>
+          <!-- Certificate label line -->
+          <rect x="135" y="96" width="160" height="6" rx="3" fill="rgba(255,255,255,.18)"/>
+          <rect x="155" y="108" width="120" height="4" rx="2" fill="rgba(255,255,255,.10)"/>
+          <!-- Divider -->
+          <line x1="135" y1="122" x2="295" y2="122" stroke="rgba(124,77,255,.22)" stroke-width="1"/>
+          <!-- Name block -->
+          <rect x="135" y="132" width="72" height="4" rx="2" fill="rgba(160,112,255,.55)"/>
+          <rect x="135" y="142" width="145" height="7" rx="3.5" fill="rgba(255,255,255,.15)"/>
+          <!-- Body lines -->
+          <rect x="135" y="158" width="150" height="4" rx="2" fill="rgba(255,255,255,.09)"/>
+          <rect x="135" y="167" width="130" height="4" rx="2" fill="rgba(255,255,255,.09)"/>
+          <rect x="135" y="176" width="140" height="4" rx="2" fill="rgba(255,255,255,.09)"/>
+          <rect x="135" y="185" width="110" height="4" rx="2" fill="rgba(255,255,255,.07)"/>
+          <!-- Seal circle -->
+          <circle cx="228" cy="235" r="24" fill="rgba(94,92,255,.22)"
+                  stroke="rgba(124,77,255,.55)" stroke-width="1.5"/>
+          <circle cx="228" cy="235" r="15" fill="rgba(94,92,255,.35)"/>
+          <!-- Star in seal -->
+          <polygon points="228,225 230.4,232 238,232 232,236.8 234.4,244 228,240 221.6,244 224,236.8 218,232 225.6,232"
+                   fill="rgba(255,210,80,.9)"/>
+          <!-- Ribbon below seal -->
+          <rect x="223" y="257" width="7"  height="26" fill="#5E5CFF" opacity=".72"/>
+          <rect x="230" y="257" width="7"  height="26" fill="#7B4DFF" opacity=".72"/>
+          <polygon points="223,283 230,277 237,283 230,294" fill="#7B4DFF" opacity=".88"/>
+
+          <!-- Certificate base/stand -->
+          <rect x="175" y="282" width="130" height="14" rx="6" fill="rgba(40,28,110,.75)"/>
+          <ellipse cx="240" cy="296" rx="58" ry="9" fill="rgba(60,40,150,.40)"/>
+
+          <!-- ── Shield badge (left) ── -->
+          <path d="M64,148 C64,148 42,133 42,112 L42,86 L106,76 L106,112 C106,133 84,148 64,148 Z"
+                fill="rgba(14,20,56,.88)" stroke="rgba(124,77,255,.48)" stroke-width="1.5"/>
+          <path d="M64,136 C64,136 50,124 50,108 L50,90 L98,90 L98,108 C98,124 84,136 64,136 Z"
+                fill="none" stroke="rgba(124,77,255,.22)" stroke-width="1"/>
+          <circle cx="64" cy="112" r="13" fill="rgba(94,92,255,.28)"/>
+          <!-- Star inside shield -->
+          <polygon points="64,105 66,109.5 71,109.5 67.5,112.5 68.8,117 64,114.2 59.2,117 60.5,112.5 57,109.5 62,109.5"
+                   fill="rgba(210,170,255,.92)"/>
+
+          <!-- ── Plant (right) ── -->
+          <!-- Pot -->
+          <path d="M350,252 L362,290 L392,290 L404,252 Z" fill="rgba(36,22,96,.88)" stroke="rgba(94,77,190,.28)" stroke-width="1"/>
+          <rect x="346" y="246" width="62" height="9" rx="4.5" fill="rgba(56,32,136,.92)"/>
+          <!-- Soil -->
+          <ellipse cx="377" cy="250" rx="27" ry="6" fill="rgba(28,18,70,.95)"/>
+          <!-- Stems -->
+          <line x1="377" y1="250" x2="377" y2="215" stroke="rgba(58,154,68,.72)" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- Left leaf -->
+          <path d="M377,235 Q350,218 338,204" stroke="rgba(58,154,68,.65)" stroke-width="6" stroke-linecap="round"/>
+          <!-- Right leaf -->
+          <path d="M377,226 Q400,210 412,196" stroke="rgba(68,168,78,.62)" stroke-width="5" stroke-linecap="round"/>
+          <!-- Top leaf -->
+          <path d="M377,215 Q368,197 372,184" stroke="rgba(58,154,68,.58)" stroke-width="4.5" stroke-linecap="round"/>
+
+          <!-- ── Dot grid (top right) ── -->
+          <circle cx="362" cy="24"  r="3.2" fill="rgba(124,77,255,.55)"/>
+          <circle cx="378" cy="24"  r="3.2" fill="rgba(124,77,255,.55)"/>
+          <circle cx="394" cy="24"  r="3.2" fill="rgba(124,77,255,.55)"/>
+          <circle cx="410" cy="24"  r="3.2" fill="rgba(124,77,255,.45)"/>
+          <circle cx="362" cy="40"  r="3.2" fill="rgba(124,77,255,.55)"/>
+          <circle cx="378" cy="40"  r="3.2" fill="rgba(124,77,255,.55)"/>
+          <circle cx="394" cy="40"  r="3.2" fill="rgba(124,77,255,.55)"/>
+          <circle cx="410" cy="40"  r="3.2" fill="rgba(124,77,255,.45)"/>
+          <circle cx="362" cy="56"  r="3.2" fill="rgba(124,77,255,.42)"/>
+          <circle cx="378" cy="56"  r="3.2" fill="rgba(124,77,255,.42)"/>
+          <circle cx="394" cy="56"  r="3.2" fill="rgba(124,77,255,.42)"/>
+          <circle cx="410" cy="56"  r="3.2" fill="rgba(124,77,255,.32)"/>
+
+          <!-- Small accent circles -->
+          <circle cx="96"  cy="198" r="4"   fill="none" stroke="rgba(124,77,255,.35)" stroke-width="1"/>
+          <circle cx="76"  cy="228" r="3"   fill="rgba(124,77,255,.20)"/>
+          <circle cx="112" cy="252" r="2.5" fill="rgba(124,77,255,.28)"/>
+
+        </svg>
+      </div>
+
+    </div><!-- /hero-area -->
+
+    <!-- ════════════════════════════════
+         CERTIFICATE CARDS
+    ════════════════════════════════ -->
+    <div class="cert-list">
+
+      <!-- ╔══════════════════════════════════════════════════╗
+           ║  CERTIFICATE 1 — IBM Data Science               ║
+           ║  To use your real certificate image, replace    ║
+           ║  the <svg>…</svg> inside .cert-thumb with:      ║
+           ║  <img src="ibm-cert.png" alt="IBM Data Science  ║
+           ║  Professional Certificate"                      ║
+           ║  style="width:100%;height:100%;object-fit:cover;║
+           ║  display:block;">                               ║
+           ╚══════════════════════════════════════════════════╝ -->
+      <div class="cert-card d2">
+
+        <!-- Thumbnail -->
+        <div class="cert-thumb" style="width: 280px; height: 210px; overflow: hidden;">
+    <img src="https://lh3.googleusercontent.com/d/1Ww5iMTB2paQZBfOMcU6gsNgz2vgnyAaZ" 
+         alt="Data Science Certificate" 
+         style="width: 100%; height: 100%; object-fit: contain; display: block;">
+</div>
+
+        <!-- Info -->
+        <div class="cert-info">
+          <p class="cert-issuer">Ducat School of Ai</p>
+          <h3 class="cert-name">Data Science<br>Professional Certificate</h3>
+          <div class="cert-date">
+            <i data-lucide="calendar" width="18" height="18" style="color:#8F65FF;"></i>
+            Sep 2025
+          </div>
+          <!-- UPDATE href WITH YOUR REAL CERTIFICATE LINK -->
+          <a class="view-cert-btn" href="https://drive.google.com/file/d/14VSNzEtMjm8FEZnnadlmEwBBrgDsMkHG/view?usp=sharing" target="_blank">
+            View Certificate
+            <i data-lucide="send" width="15" height="15"></i>
+          </a>
+        </div>
+
+      </div><!-- /cert-card 1 -->
+
+      <!-- ╔══════════════════════════════════════════════════╗
+           ║  CERTIFICATE 2 — Google Data Analytics          ║
+           ║  To use your real certificate image, replace    ║
+           ║  the <svg>…</svg> inside .cert-thumb with:      ║
+           ║  <img src="google-cert.png" alt="Google Data    ║
+           ║  Analytics Professional Certificate"            ║
+           ║  style="width:100%;height:100%;object-fit:cover;║
+           ║  display:block;">                               ║
+           ╚══════════════════════════════════════════════════╝ -->
+      <div class="cert-card d3">
+
+        <!-- Thumbnail -->
+        <div class="cert-thumb" style="width: 280px; height: 210px; overflow: hidden;">
+    <img src="https://lh3.googleusercontent.com/d/1oVOPg5xzFANXkrmKGwNXGDfimsKfjAfu" 
+         alt="Data Science Certificate" 
+         style="width: 100%; height: 100%; object-fit: contain; display: block;">
+</div>
+
+        <!-- Info -->
+        <div class="cert-info">
+          <p class="cert-issuer">Ducat India</p>
+          <h3 class="cert-name">Data Analytics<br>Professional Certificate</h3>
+          <div class="cert-date">
+            <i data-lucide="calendar" width="18" height="18" style="color:#8F65FF;"></i>
+            Sep 2025
+          </div>
+          <!-- UPDATE href WITH YOUR REAL CERTIFICATE LINK -->
+          <a class="view-cert-btn" href="https://drive.google.com/file/d/1C8Hf63Cmr-uTEhM8velo8vcoSv98a5wN/view?usp=sharing" target="_blank">
+            View Certificate
+            <i data-lucide="send" width="15" height="15"></i>
+          </a>
+        </div>
+
+      </div><!-- /cert-card 2 -->
+
+    </div><!-- /cert-list -->
+
+  </div><!-- /content -->
+</main>
+
+<script>
+lucide.createIcons();
+
+/* ── Sidebar toggle (mobile) ─────────────────────────── */
+function toggleSB() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+function closeSB() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+}
+
+/* ── Theme Switcher Logic ────────────────────────────── */
+const themeToggle = document.getElementById('theme-toggle');
+const themeText = document.getElementById('theme-text');
+const body = document.body;
+
+themeToggle.addEventListener('click', () => {
+  // Toggle the light theme class on the body element
+  body.classList.toggle('light-theme');
+  
+  // Update button text and icon label depending on active state
+  if (body.classList.contains('light-theme')) {
+    themeText.innerText = 'Dark Mode';
+    // Dynamically swap the icon to a moon for switching back
+    themeToggle.querySelector('i').setAttribute('data-lucide', 'moon');
+  } else {
+    themeText.innerText = 'Light Mode';
+    themeToggle.querySelector('i').setAttribute('data-lucide', 'sun');
+  }
+  
+  // Tell Lucide to refresh and redraw the newly swapped icon
+  lucide.createIcons();
+});
+</script>
+</body>
+</html>
