@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yashraj Sharma — Data Analyst</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --purple:      #6C63FF;
+      --purple-soft: rgba(108,99,255,0.09);
+      --purple-mid:  rgba(108,99,255,0.45);
+      --bg:          #F8F8FC;
+      --white:       #FFFFFF;
+      --dark:        #12112A;
+      --gray:        #7B7B9A;
+      --light-border:#EDEAF8;
+      --hero-grad-start: #ffffff;
+      --hero-grad-mid: #f5f2ff;
+      --hero-grad-end: #edeaff;
+    }
+
+    /* ═══════════════════════════
+       DARK MODE OVERRIDES
+    ═══════════════════════════ */
+    body.dark {
+      --bg:          #0B0A1A;
+      --white:       #131224;
+      --dark:        #F8F8FC;
+      --gray:        #A5A5C5;
+      --light-border:#232145;
+      --hero-grad-start: #131224;
+      --hero-grad-mid: #181635;
+      --hero-grad-end: #1C1942;
+    }
+
+    html, body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    /* ============================================================
+   SIDEBAR
+   ============================================================ */
+.sidebar {
+  width: 172px; /* Fixed undefined variable --sidebar-w */
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  background: var(--white);
+  border-right: 1.5px solid var(--light-border);
+  display: flex;
+  flex-direction: column;
+  padding: 28px 14px 24px;
+  z-index: 1000;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.logo {
+  font-size: 42px;
+  font-weight: 800;
+  font-family: Georgia, serif;
+  color: var(--dark);
+  letter-spacing: -2px;
+  padding-left: 6px;
+  margin-bottom: 32px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--gray);
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.nav a svg { width: 17px; height: 17px; flex-shrink: 0; stroke-width: 1.75; }
+
+.nav a:hover:not(.active) { background: var(--purple-soft); color: var(--purple); }
+.nav a.active {
+    background: var(--purple);
+    color: #fff;
+}
+
+/* Sidebar bottom */
+.sb-btm { display: flex; flex-direction: column; gap: 16px; }
+
+.dm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--dark);
+  color: var(--white);
+  border: none;
+  border-radius: 50px;
+  padding: 9px 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  transition: all .2s;
+}
+body.dark .dm {
+  background: #fff;
+  color: #111;
+}
+.dm svg { width: 14px; height: 14px; flex-shrink: 0; }
+.dm .arr { margin-left: auto; }
+
+.socials { display: flex; gap: 18px; padding: 0 6px; align-items: center; }
+.socials a { color: var(--gray); display: flex; align-items: center; text-decoration: none; transition: color .2s; }
+.socials a:hover { color: var(--purple); }
+.socials svg { width: 20px; height: 20px; }
+
+    /* ═══════════════════════════
+       MAIN WRAPPER
+    ═══════════════════════════ */
+    .main {
+      margin-left: 172px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ═══════════════════════════
+       HERO
+    ═══════════════════════════ */
+    .hero {
+      background: linear-gradient(135deg, var(--hero-grad-start) 0%, var(--hero-grad-mid) 45%, var(--hero-grad-end) 100%);
+      padding: 70px 64px 56px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 88vh;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s ease;
+    }
+
+    /* subtle large blob behind right side */
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -40px; top: -60px;
+      width: 540px; height: 540px;
+      background: radial-gradient(circle, rgba(108,99,255,0.11) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* ── hero text ── */
+    .hero-text { max-width: 480px; z-index: 2; }
+
+    .role-tag {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1.12;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+    .hero-title .purple { color: var(--purple); }
+
+    .hero-sub {
+      font-size: 15.5px;
+      color: var(--gray);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .hero-btns { display: flex; gap: 14px; align-items: center; }
+
+    .btn-fill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--purple);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 26px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14.5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.18s, transform 0.18s;
+    }
+    .btn-fill:hover { background: #5a52e8; transform: translateY(-2px); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: transparent;
+      color: var(--dark);
+      border: 1.5px solid var(--light-border);
+      border-radius: 10px;
+      padding: 14px 24px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14.5px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.18s, color 0.18s;
+    }
+    .btn-ghost:hover { border-color: var(--purple); color: var(--purple); }
+
+    /* ── profile image zone ── */
+    .hero-image-zone {
+      position: relative;
+      width: 390px;
+      height: 420px;
+      flex-shrink: 0;
+      z-index: 2;
+    }
+
+    /* Main profile circle — image clips inside this */
+    .profile-ring {
+      position: absolute;
+      top: 26px; left: 34px;
+      width: 308px; height: 308px;
+      border-radius: 50%;
+      border: 4px solid var(--purple);
+      background: var(--purple-soft);
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    /* placeholder state */
+    .ph-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 60px;
+      color: #A8A0F0;
+      font-size: 12px;
+      font-weight: 500;
+      text-align: center;
+      user-select: none;
+      width: 100%;
+    }
+
+    /* floating decorative circles */
+    .dot {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .d1 { width: 26px; height: 26px; top: 6px; left: 98px; border: 2.5px solid var(--purple-mid); background: transparent; }
+    .d2 { width: 14px; height: 14px; top: 98px; right: 14px; background: var(--purple); opacity: 0.85; }
+    .d3 { width: 32px; height: 32px; bottom: 96px; left: 2px; border: 2.5px solid var(--purple-mid); background: transparent; }
+    .d4 { width: 20px; height: 20px; bottom: 44px; left: 90px; background: var(--purple); opacity: 0.65; }
+
+    /* info badge card */
+    .badge-card {
+      position: absolute;
+      bottom: 68px; right: 0;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 16px 42px 16px 18px;
+      box-shadow: 0 6px 28px rgba(80,70,180,0.12);
+      min-width: 182px;
+      transition: background 0.3s ease;
+    }
+    .badge-card .zap {
+      position: absolute;
+      top: 14px; right: 14px;
+      font-size: 18px;
+      line-height: 1;
+    }
+    .badge-row {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      color: var(--dark);
+      text-transform: uppercase;
+      line-height: 2;
+    }
+
+    /* scroll chevron */
+    .scroll-dot {
+      position: absolute;
+      bottom: 24px; left: 50%;
+      transform: translateX(-50%);
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--light-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 3;
+      background: transparent;
+    }
+
+    /* ═══════════════════════════
+       WHAT I BRING
+    ═══════════════════════════ */
+    .bring-wrap {
+      padding: 0 64px 56px;
+      background: var(--bg);
+      transition: background 0.3s ease;
+    }
+
+    .bring-card {
+      background: var(--white);
+      border: 1.5px solid var(--light-border);
+      border-radius: 20px;
+      padding: 36px 40px;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 28px;
+    }
+
+    .cards-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card {
+      padding: 26px 22px;
+      border-radius: 14px;
+      border: 1px solid var(--light-border);
+      background: var(--white);
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .icon-blob {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+    .ic-purple { background: #6C63FF; }
+    .ic-blue   { background: #4E86E4; }
+    .ic-green  { background: #20C878; }
+    .ic-orange { background: #FF7B3F; }
+
+    .skill-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .skill-desc {
+      font-size: 12.5px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="logo">YS</div>
+
+    <nav class="nav">
+      <a href="index.html" class="active">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="about.html">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>About</span>
+      </a>
+      <a href="skills.html">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Skills</span>
+      </a>
+      <a href="projects.html">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <span>Projects</span>
+      </a>
+      <a href="education.html">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <span>Education</span>
+      </a>
+      <a href="certificates.html">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        <span>Certificates</span>
+      </a>
+      <a href="contact.html">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Contact</span>
+      </a>
+    </nav>
+
+    <div class="sb-btm">
+      <button class="dm" onclick="toggleDark()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span>Dark Mode</span>
+        <svg class="arr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><line x1="12" y1="3" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21"/><line x1="3" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21" y2="12"/></svg>
+      </button>
+      <div class="socials">
+        <a href="https://linkedin.com/in/yashraj-sharma-4a87ab348" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://github.com/yashraj-DS" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="mailto:yashrajsh1234@gmail.com" aria-label="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <p class="role-tag">Data Analyst</p>
+        <h1 class="hero-title">
+          Hi, I'm<br>
+          Yashraj <span class="purple">Sharma</span>
+        </h1>
+        <p class="hero-sub">
+          I turn raw data into meaningful insights<br>
+          that drive better decisions and<br>
+          create real impact.
+        </p>
+        <div class="hero-btns">
+          <a href="projects.html" class="btn-fill">
+            View My Work &nbsp;→
+          </a>
+          <a href="#" class="btn-ghost" download>
+            <i data-lucide="download" width="15" height="15"></i>
+            Download CV
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-image-zone">
+        <div class="profile-ring">
+          <img
+            src="https://lh3.googleusercontent.com/d/1s46rA2K2-MS2JW_8jlnflejUfaVlEF8f"
+            alt="Yashraj Sharma"
+            class="profile-photo"
+          />
+          <div class="ph-label">
+            <i data-lucide="image" width="44" height="44"></i>
+            Add your photo here<br>
+            <span style="opacity:.6;font-size:11px;">Replace src in &lt;img&gt; tag</span>
+          </div>
+        </div>
+        
+        <!-- decorative dots -->
+        <div class="dot d1"></div>
+        <div class="dot d2"></div>
+        <div class="dot d3"></div>
+        <div class="dot d4"></div>
+
+        <div class="badge-card">
+          <span class="zap">⚡</span>
+          <div class="badge-row">Fresher</div>
+          <div class="badge-row">Enthusiast</div>
+          <div class="badge-row">Quick Learner</div>
+        </div>
+      </div>
+
+      <div class="scroll-dot" onclick="document.getElementById('bring').scrollIntoView({behavior:'smooth'})">
+        <i data-lucide="chevron-down" width="17" height="17" color="#9898B0"></i>
+      </div>
+    </section>
+
+    <section class="bring-wrap" id="bring">
+      <div class="bring-card">
+        <h2 class="section-title">What I Bring</h2>
+        <div class="cards-row">
+
+          <div class="skill-card">
+            <div class="icon-blob ic-purple">
+              <i data-lucide="trending-up" width="24" height="24" color="#fff"></i>
+            </div>
+            <p class="skill-name">Data Analysis</p>
+            <p class="skill-desc">Extract meaningful insights from data</p>
+          </div>
+
+          <div class="skill-card">
+            <div class="icon-blob ic-blue">
+              <i data-lucide="bar-chart-2" width="24" height="24" color="#fff"></i>
+            </div>
+            <p class="skill-name">Data Visualization</p>
+            <p class="skill-desc">Create clear &amp; impactful visual stories</p>
+          </div>
+
+          <div class="skill-card">
+            <div class="icon-blob ic-green">
+              <i data-lucide="crosshair" width="24" height="24" color="#fff"></i>
+            </div>
+            <p class="skill-name">Problem Solving</p>
+            <p class="skill-desc">Solve problems with data-driven approach</p>
+          </div>
+
+          <div class="skill-card">
+            <div class="icon-blob ic-orange">
+              <i data-lucide="users" width="24" height="24" color="#fff"></i>
+            </div>
+            <p class="skill-name">Continuous Learning</p>
+            <p class="skill-desc">Always exploring new tools &amp; skills</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    lucide.createIcons();
+
+    /* FIXED: This function now actively updates the UI classes */
+    function toggleDark() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
+</body>
+</html>
