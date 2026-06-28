@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yashraj Sharma — Contact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <style>
+    /* ── reset ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --p1: #5E5CFF;
+      --p2: #7B4DFF;
+      --p3: #9B6DFF;
+      --pgrad: linear-gradient(90deg, #5E5CFF 0%, #7B4DFF 100%);
+      --card:  rgba(14, 20, 40, 0.72);
+      --cbord: rgba(255,255,255,0.09);
+      --wh:    #FFFFFF;
+      --body:  #B8BDD0;
+      --ibg:   rgba(10, 16, 34, 0.85);
+      --ibord: rgba(60, 80, 140, 0.55);
+    }
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        font-family: 'Poppins', sans-serif;
+        background: #07101C;
+    }
+
+    body{
+        display: flex;
+    }
+
+    /* ── stagger fade-in ── */
+    @keyframes riseUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+    .d0 { animation: riseUp .6s      ease-out both; }
+    .d1 { animation: riseUp .6s .12s ease-out both; }
+    .d2 { animation: riseUp .6s .24s ease-out both; }
+
+    /* ════════════════════════════════════════
+       SIDEBAR
+    ════════════════════════════════════════ */
+    .sidebar {
+      width: 168px; min-width: 168px;
+      height: 100vh; position: fixed;
+      top: 0; left: 0;
+      background: #FFFFFF;
+      border-right: 1px solid #E8E8F0;
+      display: flex; flex-direction: column;
+      padding: 28px 12px 24px;
+      z-index: 500;
+    }
+
+    .logo {
+      font-size: 25px; font-weight: 800;
+      color: #0F0E1E; letter-spacing: -0.5px;
+      padding-left: 10px; margin-bottom: 34px;
+    }
+
+    nav { flex: 1; }
+    nav ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+
+    nav a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px; border-radius: 10px;
+      text-decoration: none; font-size: 13px; font-weight: 500;
+      color: #757592;
+      transition: background .18s, color .18s;
+    }
+    nav a:hover { background: #F0EDFF; color: var(--p2); }
+    nav a.active {
+      background: var(--pgrad);
+      color: #FFF;
+      box-shadow: 0 4px 18px rgba(100,60,255,0.45), inset 0 1px 0 rgba(255,255,255,0.12);
+    }
+    nav a.active svg { stroke: #FFF !important; }
+
+    .dbtn {
+      display: flex; align-items: center; gap: 8px;
+      background: #11112A; color: #FFF;
+      border: none; border-radius: 12px;
+      padding: 12px 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px; font-weight: 500;
+      cursor: pointer; width: 100%; margin-bottom: 20px;
+    }
+    .dbtn .lbl { flex: 1; text-align: left; }
+
+    .soc { display:flex; gap:22px; padding-left:10px; }
+    .soc a { color:#9898B8; text-decoration:none; line-height:0; transition:color .18s; }
+    .soc a:hover { color:var(--p2); }
+    
+    /* ════════════════════════════════════════
+       MAIN — premium layered lighting
+    ════════════════════════════════════════ */
+    .main {
+      margin-left: 168px;
+      flex: 1; min-height: 100vh;
+      position: relative;
+      overflow: relative;
+
+      /* ── layered radial gradients: no black regions ── */
+      background:
+        /* 1 · big violet cluster — top-right, behind form card */
+        radial-gradient(ellipse 700px 700px at 105%  -8%,
+          rgba(110, 60, 255, 0.48) 0%,
+          rgba( 90, 50, 220, 0.22) 40%,
+          transparent 65%),
+        /* 2 · right-centre glow — fills form area */
+        radial-gradient(ellipse 560px 640px at 98%  62%,
+          rgba( 85, 45, 230, 0.28) 0%,
+          rgba( 70, 35, 200, 0.12) 45%,
+          transparent 65%),
+        /* 3 · bottom-right warmth */
+        radial-gradient(ellipse 480px 420px at 88% 102%,
+          rgba(100, 55, 240, 0.22) 0%,
+          transparent 55%),
+        /* 4 · bottom-left accent */
+        radial-gradient(ellipse 560px 480px at -4%  96%,
+          rgba( 80, 40, 210, 0.32) 0%,
+          rgba( 60, 30, 180, 0.14) 45%,
+          transparent 65%),
+        /* 5 · centre-fill — kills dark mid-zone */
+        radial-gradient(ellipse 800px 600px at 55%  52%,
+          rgba( 60, 30, 170, 0.14) 0%,
+          transparent 55%),
+        /* 6 · left-centre soft blue */
+        radial-gradient(ellipse 440px 440px at  6%  48%,
+          rgba( 50, 25, 160, 0.16) 0%,
+          transparent 55%),
+        /* 7 · base gradient */
+        linear-gradient(158deg, #0C1424 0%, #09111F 45%, #07101B 100%);
+    }
+
+    /* extra concentrated bloom blobs */
+    .blob {
+      position: absolute; border-radius: 50%;
+      pointer-events: none; z-index: 0;
+    }
+    /* top-right — strongest */
+    .blob-a {
+      width: 680px; height: 620px;
+      background: radial-gradient(circle,
+        rgba(120, 65, 255, 0.42) 0%,
+        rgba( 90, 45, 220, 0.18) 50%,
+        transparent 70%);
+      filter: blur(70px);
+      top: -230px; right: -220px;
+    }
+    /* bottom-left */
+    .blob-b {
+      width: 560px; height: 500px;
+      background: radial-gradient(circle,
+        rgba( 85, 42, 220, 0.34) 0%,
+        rgba( 65, 30, 190, 0.14) 50%,
+        transparent 70%);
+      filter: blur(80px);
+      bottom: -160px; left: -160px;
+    }
+    /* right-centre — behind form */
+    .blob-c {
+      width: 480px; height: 560px;
+      background: radial-gradient(circle,
+        rgba( 95, 50, 230, 0.26) 0%,
+        rgba( 70, 35, 200, 0.10) 50%,
+        transparent 70%);
+      filter: blur(90px);
+      top: 30%; right: -80px;
+    }
+
+    /* ════════════════════════════════════════
+       CONTENT
+    ════════════════════════════════════════ */
+    .content {
+      position: relative; z-index: 2;
+      padding: 60px 62px 60px 62px;
+      min-height: 100vh;
+    }
+
+    .grid {
+      display: flex; gap: 44px;
+      align-items: flex-start;
+    }
+
+    /* ── left column ── */
+    .col-l { width: 412px; flex-shrink: 0; }
+
+    .eyebrow {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 3.6px; text-transform: uppercase;
+      color: #8F65FF; margin-bottom: 12px;
+    }
+
+    .heading {
+      font-size: 48px; font-weight: 700;
+      color: var(--wh); line-height: 1.1;
+      letter-spacing: -0.4px; margin-bottom: 14px;
+    }
+
+    .subtext {
+      font-size: 15px; color: var(--body);
+      line-height: 1.74; margin-bottom: 30px;
+    }
+
+    /* ── right column ── */
+    .col-r { flex: 1; }
+
+    /* ════════════════════════════════════════
+       GLASS CARD BASE
+    ════════════════════════════════════════ */
+    .card {
+      background: rgba(14, 20, 40, 0.68);
+      backdrop-filter: blur(22px) saturate(1.4);
+      -webkit-backdrop-filter: blur(22px) saturate(1.4);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      box-shadow:
+        0 28px 64px rgba(0,0,0,0.50),
+        0  0  0 0.5px rgba(255,255,255,0.04) inset;
+      transition: transform .28s ease, box-shadow .28s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 36px 76px rgba(0,0,0,0.56),
+        0 0 40px rgba(100,60,255,0.08),
+        0  0  0 0.5px rgba(255,255,255,0.06) inset;
+    }
+
+    /* ════════════════════════════════════════
+       CONTACT INFO ROWS
+    ════════════════════════════════════════ */
+    .row {
+      display: flex; align-items: center; gap: 18px;
+      padding: 18px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.055);
+      text-decoration: none;
+      transition: background .18s;
+    }
+    .row:last-child { border-bottom: none; }
+    .row:hover { background: rgba(255,255,255,0.028); cursor: pointer; }
+
+    .ico {
+      width: 54px;
+      height: 54px;
+      flex-shrink: 0;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg,
+        rgba(155, 109, 255, 0.25),
+        rgba(255, 79, 216, 0.12)
+      );
+      border: 1px solid rgba(155, 109, 255, 0.35);
+      box-shadow:
+        0 0 18px rgba(155, 109, 255, 0.35),
+        0 0 28px rgba(255, 79, 216, 0.15),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+      transition: 0.25s ease;
+    }
+    .ico img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      filter: brightness(0) invert(1)
+              drop-shadow(0 0 6px rgba(255, 79, 216, 0.6));
+    }
+    
+    .ico.gh { 
+      background: linear-gradient(140deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+      border-color: rgba(255,255,255,0.12); 
+    }
+
+    .rtxt { min-width: 0; }
+    .rlbl {
+      font-size: 13.5px; font-weight: 600;
+      color: var(--wh); margin-bottom: 3px;
+    }
+    .rval {
+      font-size: 12.5px; color: var(--body);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    /* ════════════════════════════════════════
+       FORM CARD
+    ════════════════════════════════════════ */
+    .fc { padding: 34px 36px 36px; }
+    .fields { display: flex; flex-direction: column; gap: 20px; margin-bottom: 24px; }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+
+    .flbl {
+      font-size: 14.5px; font-weight: 500;
+      color: rgba(255,255,255,0.88);
+    }
+
+    .fi, .fa {
+      width: 100%;
+      background: rgba(10, 16, 34, 0.88);
+      border: 1px solid rgba(50, 70, 130, 0.60);
+      border-radius: 12px;
+      color: var(--wh);
+      font-family: 'Poppins', sans-serif;
+      font-size: 14.5px;
+      outline: none;
+      transition: border-color .22s, box-shadow .22s;
+    }
+    .fi { height: 56px; padding: 0 18px; }
+    .fa { height: 188px; padding: 14px 18px; resize: vertical; min-height: 120px; }
+
+    .fi::placeholder, .fa::placeholder { color: #525870; font-size: 14px; }
+
+    .fi:focus, .fa:focus {
+      border-color: rgba(124, 77, 255, 0.90);
+      box-shadow:
+        0 0  0  3px rgba(124, 77, 255, 0.18),
+        0 0 20px     rgba(124, 77, 255, 0.22);
+    }
+
+    /* ── send button ── */
+    .sbtn {
+      width: 100%; height: 60px;
+      background: var(--pgrad);
+      border: none; border-radius: 14px;
+      color: var(--wh);
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px; font-weight: 600;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      position: relative; overflow: hidden;
+      box-shadow: 0 8px 28px rgba(100, 60, 255, 0.38);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .sbtn::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(255,255,255,0.09); opacity: 0;
+      transition: opacity .22s;
+    }
+    .sbtn:hover::before { opacity: 1; }
+    .sbtn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 38px rgba(100, 60, 255, 0.52);
+    }
+    .sbtn:active { transform: translateY(-1px); }
+    .sbtn > * { position: relative; z-index: 1; }
+
+    .sbtn.ok {
+      background: linear-gradient(90deg, #1a6e2f, #27a044) !important;
+      box-shadow: 0 8px 28px rgba(30,140,60,0.35);
+    }
+    .sbtn.ok:hover { transform: none; }
+
+
+    /* ═══ GLOBAL THEME TRANSITIONS & LIGHT MODE OVERRIDES ════ */
+    body {
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .sidebar {
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    body.light-theme {
+      background: #F4F6FA;
+    }
+    body.light-theme .main {
+      background: linear-gradient(135deg, #F4F6FA 0%, #EAEFF8 100%);
+    }
+    body.light-theme .sidebar {
+      background: #FFFFFF;
+      border-right: 1px solid #D9DEEB;
+    }
+    body.light-theme .heading {
+      color: #0F0E1E;
+    }
+    body.light-theme .subtext {
+      color: #55596D;
+    }
+
+    /* Light Theme Cards Configuration */
+    body.light-theme .card {
+      background: rgba(255, 255, 255, 0.80);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    }
+    body.light-theme .card:hover {
+      box-shadow: 0 20px 40px rgba(94, 92, 255, 0.12);
+      border-color: rgba(94, 92, 255, 0.3);
+    }
+    body.light-theme .row {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    body.light-theme .row:hover {
+      background: rgba(0, 0, 0, 0.02);
+    }
+    body.light-theme .rlbl {
+      color: #1A1930;
+    }
+    body.light-theme .rval {
+      color: #55596D;
+    }
+
+    /* Form Fields Styling for Light Mode */
+    body.light-theme .flbl {
+      color: #333647;
+    }
+    body.light-theme .fi, 
+    body.light-theme .fa {
+      background: #FFFFFF;
+      border: 1px solid #C5CAD6;
+      color: #0F0E1E;
+    }
+    body.light-theme .fi::placeholder, 
+    body.light-theme .fa::placeholder {
+      color: #A0A5B5;
+    }
+    body.light-theme .fi:focus, 
+    body.light-theme .fa:focus {
+      border-color: var(--p1);
+      box-shadow: 0 0 0 3px rgba(94, 92, 255, 0.15);
+    }
+
+    /* Handle dynamic details like glowing bloom icons for light layout */
+    body.light-theme .blob {
+      opacity: 0.15; /* Subdued bloom graphics behind text fields on light layout */
+    }
+    body.light-theme .ico img {
+      filter: none; /* Maintain rich colorful asset rendering over light blocks */
+    }
+    body.light-theme .ico {
+      background: rgba(94, 92, 255, 0.06);
+      border: 1px solid rgba(94, 92, 255, 0.15);
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════ SIDEBAR ═══════════════ -->
+  <aside class="sidebar">
+    <div class="logo">YS</div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html"><i data-lucide="house" width="16" height="16"></i> Home</a></li>
+        <li><a href="about.html"><i data-lucide="user" width="16" height="16"></i> About</a></li>
+        <li><a href="skills.html"><i data-lucide="layout-grid" width="16" height="16"></i> Skills</a></li>
+        <li><a href="projects.html"><i data-lucide="monitor" width="16" height="16"></i> Projects</a></li>
+        <li><a href="education.html"><i data-lucide="graduation-cap" width="16" height="16"></i> Education</a></li>
+        <li><a href="certificates.html"><i data-lucide="shield-check" width="16" height="16"></i> Certificates</a></li>
+        <li><a href="contact.html" class="active"><i data-lucide="user-circle" width="16" height="16"></i> Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Theme switch configuration mapped smoothly -->
+    <button class="dbtn" id="theme-toggle">
+      <i data-lucide="sun" width="14" height="14"></i>
+      <span class="lbl" id="theme-text">Light Mode</span>
+    </button>
+
+    <div class="soc">
+      <a href="https://linkedin.com/in/yashraj-sharma-4a87ab348" target="_blank" title="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+      </a>
+      <a href="https://github.com/yashraj-DS" target="_blank" title="GitHub">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+      </a>
+      <a href="mailto:yashrajsh1234@gmail.com" title="Email">
+        <i data-lucide="mail" width="18" height="18"></i>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ═══════════════ MAIN ═══════════════ -->
+  <main class="main">
+
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="blob blob-c"></div>
+
+    <div class="content">
+      <div class="grid">
+
+        <!-- ══════ LEFT ══════ -->
+        <div class="col-l">
+          <div class="d0">
+            <p class="eyebrow">Get In Touch</p>
+            <h1 class="heading">Let's Connect</h1>
+            <p class="subtext">
+              Have a project in mind or want to connect?<br>
+              Feel free to reach out to me.
+            </p>
+          </div>
+
+          <div class="card d1">
+            <a class="row" href="mailto:yashrajsh1234@gmail.com">
+              <div class="ico"><img src="https://cdn.simpleicons.org/gmail" alt="Gmail"></div>
+              <div class="rtxt">
+                <p class="rlbl">Gmail</p>
+                <p class="rval">yashrajsh1234@gmail.com</p>
+              </div>
+            </a>
+
+            <a class="row" href="tel:+919556643210">
+              <div class="ico"><img src="https://cdn.simpleicons.org/whatsapp" alt="WhatsApp"></div>
+              <div class="rtxt">
+                <p class="rlbl">WhatsApp</p>
+                <p class="rval">+91 93159 66837</p>
+              </div>
+            </a>
+
+            <div class="row">
+              <div class="ico"><img src="https://cdn.simpleicons.org/mapbox" alt="Location"></div>
+              <div class="rtxt">
+                <p class="rlbl">Location</p>
+                <p class="rval">New Delhi, India</p>
+              </div>
+            </div>
+
+            <a class="row" href="https://www.linkedin.com/in/yashraj-sharma-4a87ab348" target="_blank" rel="noopener">
+              <div class="ico"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn"></div>
+              <div class="rtxt">
+                <p class="rlbl">LinkedIn</p>
+                <p class="rval">linkedin.com/in/yashraj-sharma</p>
+              </div>
+            </a>
+
+            <a class="row" href="https://github.com/yashraj-DS" target="_blank" rel="noopener">
+              <div class="ico gh"><img src="https://cdn.simpleicons.org/github" alt="github"></div>
+              <div class="rtxt">
+                <p class="rlbl">GitHub</p>
+                <p class="rval">github.com/yashraj-sharma</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- ══════ RIGHT ══════ -->
+        <div class="col-r d2">
+          <div class="card fc">
+            <form id="cf" onsubmit="go(event)" novalidate>
+              <div class="fields">
+                <div class="field">
+                  <label class="flbl" for="n">Your Name</label>
+                  <input class="fi" id="n" type="text" placeholder="Enter your name" autocomplete="off" required/>
+                </div>
+
+                <div class="field">
+                  <label class="flbl" for="e">Your Email</label>
+                  <input class="fi" id="e" type="email" placeholder="Enter your email" autocomplete="off" required/>
+                </div>
+
+                <div class="field">
+                  <label class="flbl" for="s">Subject</label>
+                  <input class="fi" id="s" type="text" placeholder="Enter subject" autocomplete="off" required/>
+                </div>
+
+                <div class="field">
+                  <label class="flbl" for="m">Message</label>
+                  <textarea class="fa" id="m" placeholder="Type your message here…" required></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="sbtn" id="sb">
+                <span id="stxt">Send Message</span>
+                <svg id="sico" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"/>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    lucide.createIcons();
+
+    /* ── Form Logic ── */
+    function go(e) {
+      e.preventDefault();
+      const vals = ['n','e','s','m'].map(id => document.getElementById(id).value.trim());
+      if (vals.some(v => !v)) return;
+
+      const btn  = document.getElementById('sb');
+      const txt  = document.getElementById('stxt');
+      const ico  = document.getElementById('sico');
+
+      txt.textContent = 'Sending…';
+      ico.style.display = 'none';
+      btn.disabled = true;
+      btn.style.opacity = '.7';
+
+      setTimeout(() => {
+        btn.classList.add('ok');
+        txt.textContent = '✓  Message Sent!';
+        btn.style.opacity = '1';
+        document.getElementById('cf').reset();
+
+        setTimeout(() => {
+          btn.classList.remove('ok');
+          btn.disabled = false;
+          txt.textContent = 'Send Message';
+          ico.style.display = '';
+        }, 3200);
+      }, 1100);
+    }
+
+    /* ── Smart Theme Switcher Logic ──────────────────────── */
+const themeToggle = document.getElementById('theme-toggle');
+const themeText = document.getElementById('theme-text');
+const body = document.body;
+
+function updateThemeUI(isLight) {
+  if (isLight) {
+    body.classList.add('light-theme');
+    if (themeText) themeText.innerText = 'Dark Mode';
+    if (themeToggle && themeToggle.querySelector('i')) {
+      themeToggle.querySelector('i').setAttribute('data-lucide', 'moon');
+    }
+  } else {
+    body.classList.remove('light-theme');
+    if (themeText) themeText.innerText = 'Light Mode';
+    if (themeToggle && themeToggle.querySelector('i')) {
+      themeToggle.querySelector('i').setAttribute('data-lucide', 'sun');
+    }
+  }
+  // Re-render matching Lucide icons cleanly
+  if (window.lucide) lucide.createIcons();
+}
+
+// 1. SAFELY INITIALIZE THE THEME ON LOAD
+const savedTheme = localStorage.getItem('portfolio-theme');
+if (savedTheme === 'light') {
+  updateThemeUI(true);  // User prefers Light Mode
+} else {
+  updateThemeUI(false); // Explicitly default to Night Mode if 'dark' or if nothing is set yet!
+}
+
+// 2. STABLE CLICK EVENT LISTENER 
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    // Check if the page is currently in Light Mode
+    const currentlyLight = body.classList.contains('light-theme');
+    
+    // Switch to the opposite state
+    const targetIsLight = !currentlyLight;
+    
+    // Save state and update UI components
+    localStorage.setItem('portfolio-theme', targetIsLight ? 'light' : 'dark');
+    updateThemeUI(targetIsLight);
+  });
+}
+  </script>
+</body>
+</html>
